@@ -10,9 +10,9 @@ def solution(p: float, x: np.array) -> tuple:
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    x = 2 * x / 32 ** 2
+    x = x - 0.5
     alpha = 1 - p
     loc = x.mean()
     scale = 1
-    return loc - scale * norm.ppf(1 - alpha / 2), \
-           loc - scale * norm.ppf(alpha / 2)
+    return 2 * loc / 32 ** 2 - 2 * scale * norm.ppf(1 - alpha / 2) / 32 ** 2, \
+           2 * loc / 32 ** 2 - 2 * scale * norm.ppf(alpha / 2) / 32 ** 2
