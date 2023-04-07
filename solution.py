@@ -13,6 +13,6 @@ def solution(p: float, x: np.array) -> tuple:
     x = x - 0.5
     alpha = 1 - p
     loc = x.mean()
-    scale = 1
-    return 2 * loc / 32 ** 2 - 2 * scale * norm.ppf(1 - alpha / 2) / 32 ** 2, \
-           2 * loc / 32 ** 2 - 2 * scale * norm.ppf(alpha / 2) / 32 ** 2
+    scale = np.sqrt(np.var(x)) / np.sqrt(len(x))
+    return 2 * loc / 32 ** 2 + 2 * scale * norm.ppf(1 - alpha / 2) / 32 ** 2, \
+           2 * loc / 32 ** 2 + 2 * scale * norm.ppf(alpha / 2) / 32 ** 2
